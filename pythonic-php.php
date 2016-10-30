@@ -7,9 +7,11 @@ class PP {
     if(is_array($obj))
       return count($obj);
   }
+
   public static function append($array, $obj) {
     return array_push($array, $obj);
   }
+
   public static function arr($obj=0, $default=0) {
   	if($obj == 0)
   		return array();
@@ -24,37 +26,54 @@ class PP {
       append($out, $obj{$i});
     return $out;
   }
-  public static function str($array) {
-    $out = '';
-    foreach($array as $el)
-      append($out, $el);
-    return $out;
+
+  public static function str($obj) {
+    if(is_array($obj)) {
+      $out = '';
+      foreach($obj as $el)
+        append($out, $el);
+      return $out
+    }
+    return $obj.'';
   }
-  public static function int($n) {
-    return $n + 0;
-  }
+
   public static function bin($n) {
-    $n = int($n);
+    $cur = abs($n);
+    if($cur == 0 or $cur == 1) return '0b'.$n;
+    $out = arr();
+    do {
+      append($out, $cur % 2)
+      $cur = intval($cur / 2);
+    } while($cur != 0)
+    return '0b1'.$this::reversed($out);
   }
+
   public static function sum($array) {
     $out = 0;
     foreach($array as $el) {
-      $out += int($el);
+      $out += $el;
     }
     return $out;
   }
+
   public static function map($function, $array) {
     $out = array();
     foreach($array as $el)
       append($out, $function($el));
     return $out;
   }
+
   public static function reversed($array) {
     $out = array();
     for($i = $this::len($array); $i >= 0; $i--)
       append($out, $array[$i]);
     return $out;
   }
+
+  public function reverse(&$array) {
+    $array = reversed($array);
+  }
+
   public static function sorted($array) {
     if($this::len($array) <= 1)
       return $array;
