@@ -1,3 +1,4 @@
+<?php
 class PP {
   public static function len($obj) {
     if(is_string($obj))
