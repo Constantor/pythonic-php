@@ -9,7 +9,7 @@ class PP {
   public static function append($array, $obj) {
     return array_push($array, $obj);
   }
-  public static function list($obj, $default=0) {
+  public static function arr($obj, $default=0) {
   	if(is_int($obj)) {
   		$out = array();
   		for($i = 0; $i < $obj; $i++)
