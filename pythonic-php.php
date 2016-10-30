@@ -78,4 +78,8 @@ class PP {
   public static function input($file=STDOUT) {
     return fgets($file);
   }
+
+  public static function split($string, $delimetr=' ') {
+  	return explode($delimetr, $string);
+  }
 }
