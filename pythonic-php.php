@@ -72,6 +72,10 @@ class PP {
     }
     return array_merge($this::sorted($left), $middle, $this::sorted($right));
   }
+
+  public static function sort(&$array) {
+  	$array = sorted($array);
+  }
   
   public static function print($mes, $end="\n", $file=STDOUT) {
     return fwrite($file, $mes.$end);
