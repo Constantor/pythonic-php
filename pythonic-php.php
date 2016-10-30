@@ -128,7 +128,7 @@ class set {
   }
 
   public function pop() {
-    if(PP::len($this->set) == 0)
+    if(len($this->set) == 0)
       return null;
     $out = array_rand(array_keys($this->set));
     unset($this->set[$out]);
