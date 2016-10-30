@@ -32,7 +32,7 @@ class PP {
       $out = '';
       foreach($obj as $el)
         $this::append($out, $el);
-      return $out
+      return $out;
     }
     return $obj.'';
   }
