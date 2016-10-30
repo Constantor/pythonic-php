@@ -18,12 +18,12 @@ class PP {
   	if(is_int($obj)) {
   		$out = array();
   		for($i = 0; $i < $obj; $i++)
-  			append($out, $default);
+  			$this::append($out, $default);
   		return $out;
   	}
     $out = array();
     for($i = 0; $i < $this::len($obj); $i++)
-      append($out, $obj{$i});
+      $this::append($out, $obj{$i});
     return $out;
   }
 
@@ -31,7 +31,7 @@ class PP {
     if(is_array($obj)) {
       $out = '';
       foreach($obj as $el)
-        append($out, $el);
+        $this::append($out, $el);
       return $out
     }
     return $obj.'';
@@ -40,9 +40,9 @@ class PP {
   public static function bin($n) {
     $cur = abs($n);
     if($cur == 0 or $cur == 1) return '0b'.$n;
-    $out = arr();
+    $out = array();
     do {
-      append($out, $cur % 2)
+      $this::append($out, $cur % 2)
       $cur = intval($cur / 2);
     } while($cur != 0)
     return '0b1'.$this::reversed($out);
@@ -59,19 +59,19 @@ class PP {
   public static function map($function, $array) {
     $out = array();
     foreach($array as $el)
-      append($out, $function($el));
+      $this::append($out, $function($el));
     return $out;
   }
 
   public static function reversed($array) {
     $out = array();
     for($i = $this::len($array); $i >= 0; $i--)
-      append($out, $array[$i]);
+      $this::append($out, $array[$i]);
     return $out;
   }
 
   public function reverse(&$array) {
-    $array = reversed($array);
+    $array = $this::reversed($array);
   }
 
   public static function sorted($array) {
@@ -93,7 +93,7 @@ class PP {
   }
 
   public static function sort(&$array) {
-  	$array = sorted($array);
+  	$array = $this::sorted($array);
   }
 
   public static function print($mes, $end="\n", $file=STDOUT) {
@@ -115,15 +115,14 @@ class set {
 
   public function __construct($values=array()) {
     $this->set = array();
-    foreach($values as $value) {
-      if(!array_key_exists($value, $hashset)) {
+    foreach($values as $value)
+      if(!array_key_exists($value, $this->set))
           $this->set[$value] = true;
-      }
-    }
   }
 
   public function add($value) {
-    $this->set[$value] = true;
+    if(!array_key_exists($value, $this->set))
+      $this->set[$value] = true;
   }
 
   public function pop() {
