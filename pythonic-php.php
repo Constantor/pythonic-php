@@ -1,17 +1,17 @@
 <?php
 
-public static function len($obj) {
+function len($obj) {
   if(is_string($obj))
     return strlen($obj);
   if(is_array($obj))
     return count($obj);
 }
 
-public static function append($array, $obj) {
+function append($array, $obj) {
   return array_push($array, $obj);
 }
 
-public static function arr($obj=0, $default=0) {
+function arr($obj=0, $default=0) {
 	if($obj == 0)
 		return array();
 	if(is_int($obj)) {
@@ -26,7 +26,7 @@ public static function arr($obj=0, $default=0) {
   return $out;
 }
 
-public static function str($obj) {
+function str($obj) {
   if(is_array($obj)) {
     $out = '';
     foreach($obj as $el)
@@ -36,7 +36,7 @@ public static function str($obj) {
   return $obj.'';
 }
 
-public static function bin($n) {
+function bin($n) {
   $cur = abs($n);
   if($cur == 0 or $cur == 1) return '0b'.$n;
   $out = array();
@@ -47,7 +47,7 @@ public static function bin($n) {
   return '0b1'.str($this::reversed($out));
 }
 
-public static function sum($array) {
+function sum($array) {
   $out = 0;
   foreach($array as $el) {
     $out += $el;
@@ -55,14 +55,14 @@ public static function sum($array) {
   return $out;
 }
 
-public static function map($function, $array) {
+function map($function, $array) {
   $out = array();
   foreach($array as $el)
     $this::append($out, $function($el));
   return $out;
 }
 
-public static function reversed($array) {
+function reversed($array) {
   $out = array();
   for($i = $this::len($array); $i >= 0; $i--)
     $this::append($out, $array[$i]);
@@ -73,7 +73,7 @@ public function reverse(&$array) {
   $array = $this::reversed($array);
 }
 
-public static function sorted($array) {
+function sorted($array) {
   if($this::len($array) <= 1)
     return $array;
   $left = array();
@@ -91,23 +91,23 @@ public static function sorted($array) {
   return array_merge($this::sorted($left), $middle, $this::sorted($right));
 }
 
-public static function sort(&$array) {
+function sort(&$array) {
 	$array = $this::sorted($array);
 }
 
-public static function printp($mes, $end="\n", $file=STDOUT) {
+function printp($mes, $end="\n", $file=STDOUT) {
   return fwrite($file, $mes.$end);
 }
 
-public static function input($file=STDOUT) {
+function input($file=STDOUT) {
   return fgets($file);
 }
 
-public static function split($string, $delimetr=' ') {
+function split($string, $delimetr=' ') {
 	return explode($delimetr, $string);
 }
 
-public static function num($str) {
+function num($str) {
   return $str + 0;
 }
 
