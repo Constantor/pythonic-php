@@ -115,7 +115,7 @@ class PP {
 
 
 class set {
-  private $set;
+  protected $set;
 
   public function __construct($values=array()) {
     $this->set = array();
@@ -135,5 +135,9 @@ class set {
     $out = array_rand(array_keys($this->set));
     unset($this->set[$out]);
     return $out;
+  }
+
+  public function arr() {
+    return array_keys($this->set);
   }
 }
