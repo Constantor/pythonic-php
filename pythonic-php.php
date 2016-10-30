@@ -17,12 +17,12 @@ function arr($obj=0, $default=0) {
 	if(is_int($obj)) {
 		$out = array();
 		for($i = 0; $i < $obj; $i++)
-			$this::append($out, $default);
+			append($out, $default);
 		return $out;
 	}
   $out = array();
-  for($i = 0; $i < $this::len($obj); $i++)
-    $this::append($out, $obj{$i});
+  for($i = 0; $i < len($obj); $i++)
+    append($out, $obj{$i});
   return $out;
 }
 
@@ -30,7 +30,7 @@ function str($obj) {
   if(is_array($obj)) {
     $out = '';
     foreach($obj as $el)
-      $this::append($out, $el);
+      append($out, $el);
     return $out;
   }
   return $obj.'';
@@ -41,10 +41,10 @@ function bin($n) {
   if($cur == 0 or $cur == 1) return '0b'.$n;
   $out = array();
   do {
-    $this::append($out, $cur % 2);
+    append($out, $cur % 2);
     $cur = intval($cur / 2);
   } while($cur != 0);
-  return '0b1'.str($this::reversed($out));
+  return '0b1'.str(reversed($out));
 }
 
 function sum($array) {
@@ -58,28 +58,28 @@ function sum($array) {
 function map($function, $array) {
   $out = array();
   foreach($array as $el)
-    $this::append($out, $function($el));
+    append($out, $function($el));
   return $out;
 }
 
 function reversed($array) {
   $out = array();
-  for($i = $this::len($array); $i >= 0; $i--)
-    $this::append($out, $array[$i]);
+  for($i = len($array); $i >= 0; $i--)
+    append($out, $array[$i]);
   return $out;
 }
 
 public function reverse(&$array) {
-  $array = $this::reversed($array);
+  $array = reversed($array);
 }
 
 function sorted($array) {
-  if($this::len($array) <= 1)
+  if(len($array) <= 1)
     return $array;
   $left = array();
   $middle = array();
   $right = array();
-  $cur = rand(0, $this::len($array) - 1);
+  $cur = rand(0, len($array) - 1);
   foreach($array as $el) {
     if($el > $cur)
       append($right, $el);
@@ -88,11 +88,11 @@ function sorted($array) {
     else
       append($middle, $el);
   }
-  return array_merge($this::sorted($left), $middle, $this::sorted($right));
+  return array_merge(sorted($left), $middle, sorted($right));
 }
 
 function sort(&$array) {
-	$array = $this::sorted($array);
+	$array = sorted($array);
 }
 
 function printp($mes, $end="\n", $file=STDOUT) {
