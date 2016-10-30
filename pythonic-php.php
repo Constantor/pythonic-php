@@ -44,7 +44,7 @@ class PP {
     do {
       $this::append($out, $cur % 2);
       $cur = intval($cur / 2);
-    } while($cur != 0)
+    } while($cur != 0);
     return '0b1'.str($this::reversed($out));
   }
 
