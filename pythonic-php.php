@@ -42,7 +42,7 @@ class PP {
     if($cur == 0 or $cur == 1) return '0b'.$n;
     $out = array();
     do {
-      $this::append($out, $cur % 2)
+      $this::append($out, $cur % 2);
       $cur = intval($cur / 2);
     } while($cur != 0)
     return '0b1'.$this::reversed($out);
