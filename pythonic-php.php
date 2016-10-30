@@ -73,7 +73,7 @@ function reverse(&$array) {
   $array = reversed($array);
 }
 
-function sorted($array) {
+function qsorted($array) {
   if(len($array) <= 1)
     return $array;
   $left = array();
@@ -88,11 +88,11 @@ function sorted($array) {
     else
       append($middle, $el);
   }
-  return array_merge(sorted($left), $middle, sorted($right));
+  return array_merge(qsorted($left), $middle, qsorted($right));
 }
 
-function sort(&$array) {
-	$array = sorted($array);
+function qsort(&$array) {
+	$array = qsorted($array);
 }
 
 function printp($mes, $end="\n", $file=STDOUT) {
