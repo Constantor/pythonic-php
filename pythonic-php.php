@@ -103,10 +103,6 @@ function input($file=STDOUT) {
   return fgets($file);
 }
 
-function split($string, $delimetr=' ') {
-	return explode($delimetr, $string);
-}
-
 function num($str) {
   return $str + 0;
 }
