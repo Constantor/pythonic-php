@@ -107,6 +107,10 @@ class PP {
   public static function split($string, $delimetr=' ') {
   	return explode($delimetr, $string);
   }
+
+  public static function num($str) {
+    return $str + 0;
+  }
 }
 
 
