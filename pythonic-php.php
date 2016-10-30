@@ -73,4 +73,12 @@ class PPHP {
     }
     return array_merge($this::sorted($left), $this::sorted($middle), $this::sorted($right));
   }
+  
+  public static function print($mes, $end="\n", $file=STDOUT) {
+    return fwrite($file, $mes.$end);
+  }
+  
+  public static function input($file=STDOUT) {
+    return fgets($file);
+  }
 }
