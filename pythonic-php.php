@@ -85,7 +85,7 @@ class PP {
       if($el > $cur)
         append($right, $el);
       elseif($el < $cur)
-        append($left, $el)
+        append($left, $el);
       else
         append($middle, $el);
     }
