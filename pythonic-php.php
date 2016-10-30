@@ -45,7 +45,7 @@ class PP {
       $this::append($out, $cur % 2);
       $cur = intval($cur / 2);
     } while($cur != 0)
-    return '0b1'.$this::reversed($out);
+    return '0b1'.str($this::reversed($out));
   }
 
   public static function sum($array) {
