@@ -76,16 +76,42 @@ class PP {
   public static function sort(&$array) {
   	$array = sorted($array);
   }
-  
+
   public static function print($mes, $end="\n", $file=STDOUT) {
     return fwrite($file, $mes.$end);
   }
-  
+
   public static function input($file=STDOUT) {
     return fgets($file);
   }
 
   public static function split($string, $delimetr=' ') {
   	return explode($delimetr, $string);
+  }
+}
+
+
+class set {
+  private $set;
+
+  public function __construct($values=array()) {
+    $this->set = array();
+    foreach($values as $value) {
+      if(!array_key_exists($value, $hashset)) {
+          $this->set[$value] = true;
+      }
+    }
+  }
+
+  public function add($value) {
+    $this->set[$value] = true;
+  }
+
+  public function pop() {
+    if(PP::len($this->set) == 0)
+      return null;
+    $out = array_rand(array_keys($this->set));
+    unset($this->set[$out]);
+    return $out;
   }
 }
