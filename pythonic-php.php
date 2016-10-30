@@ -1,6 +1,6 @@
 <?php
 
-class PPHP {
+class PP {
   public static function len($obj) {
     if(is_string($obj))
       return strlen($obj);
