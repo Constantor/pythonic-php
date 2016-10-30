@@ -1,4 +1,5 @@
 <?php
+
 class PP {
   public static function len($obj) {
     if(is_string($obj))
@@ -67,7 +68,7 @@ class PP {
       else
         append($middle, $el);
     }
-    return array_merge($this::sorted($left), $this::sorted($middle), $this::sorted($right));
+    return array_merge($this::sorted($left), $middle, $this::sorted($right));
   }
   
   public static function print($mes, $end="\n", $file=STDOUT) {
