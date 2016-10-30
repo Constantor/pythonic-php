@@ -69,7 +69,7 @@ function reversed($array) {
   return $out;
 }
 
-public function reverse(&$array) {
+function reverse(&$array) {
   $array = reversed($array);
 }
 
