@@ -96,7 +96,7 @@ class PP {
   	$array = $this::sorted($array);
   }
 
-  public static function print($mes, $end="\n", $file=STDOUT) {
+  public static function printp($mes, $end="\n", $file=STDOUT) {
     return fwrite($file, $mes.$end);
   }
 
